@@ -1,0 +1,33 @@
+local graph = require('graph')
+local gui = require('gui')
+local wk = gui.workspace()
+local points = {{20,1},{20,5},{18,9},{10,18},{5,23},{5,0}}
+local canvas = wk:addChild(graph.create(1,1,160,50,0xFFFFFF,0x0))
+point2 = canvas:setPoint(points[1][1],points[1][2])
+for i = 2,#points do
+  point1 = point2
+  point2 = canvas:setPoint(points[i][1],points[i][2])
+  canvas:setLine(point1,point2)
+end
+point2 = canvas:setPoint(points[1][1],points[1][2]*-1)
+for i = 2,#points do
+  point1 = point2
+  point2 = canvas:setPoint(points[i][1],points[i][2]*-1)
+  canvas:setLine(point1,point2)
+end
+local points = {{-35,10},{-20,10},{-20,7},{-35,7},{-35,10}}
+point2 = canvas:setPoint(points[1][1],points[1][2])
+for i = 2,#points do
+  point1 = point2
+  point2 = canvas:setPoint(points[i][1],points[i][2])
+  canvas:setLine(point1,point2)
+end
+point2 = canvas:setPoint(points[1][1],points[1][2]*-1)
+for i = 2,#points do
+  point1 = point2
+  point2 = canvas:setPoint(points[i][1],points[i][2]*-1)
+  canvas:setLine(point1,point2)
+end
+canvas:update()
+wk:draw()
+wk:start()
